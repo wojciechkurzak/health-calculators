@@ -1,15 +1,25 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { View, Text, StyleSheet, TextInput } from 'react-native'
 import CalcButton from '../components/CalcButton'
 import DisplayValue from '../components/DisplayValue'
+import GenderButton from '../components/GenderButton'
+
+type GenderType = {
+	male: boolean
+	female: boolean
+}
 
 const BmiScreen = () => {
 	const [height, setHeight] = useState<string>('')
 	const [weight, setWeight] = useState<string>('')
+	const [gender, setGender] = useState<GenderType>({
+		male: false,
+		female: false,
+	})
 	const [bmi, setBmi] = useState<string>('')
+	const [idealWeight, setIdealWeight] = useState<string>('')
 
 	const CalculateBmi = (): void => {
-		if (height.length === 0 || weight.length === 0) return
 		const value =
 			Math.round(
 				(parseInt(weight) / Math.pow(parseInt(height) / 100, 2)) * 10
@@ -17,8 +27,40 @@ const BmiScreen = () => {
 		setBmi(value.toString())
 	}
 
+	const CalculateIdealWeight = () => {
+		const value =
+			Math.round(
+				(parseInt(height) - 100) * (gender.male ? 0.9 : 0.85) * 10
+			) / 10
+		setIdealWeight(value.toString())
+	}
+
+	const DisplayValues = (): void => {
+		if (
+			height.length === 0 ||
+			weight.length === 0 ||
+			(!gender.male && !gender.female)
+		)
+			return
+
+		CalculateBmi()
+		CalculateIdealWeight()
+	}
+
 	return (
 		<View style={styles.container}>
+			<View style={styles.genderContainer}>
+				<GenderButton
+					text="Mężczyzna"
+					value={gender.male}
+					onPress={() => setGender({ male: true, female: false })}
+				/>
+				<GenderButton
+					text="Kobieta"
+					value={gender.female}
+					onPress={() => setGender({ male: false, female: true })}
+				/>
+			</View>
 			<TextInput
 				style={styles.input}
 				value={height}
@@ -33,10 +75,13 @@ const BmiScreen = () => {
 				keyboardType="numeric"
 				placeholder="Waga"
 			/>
-			<CalcButton text="Oblicz" onPress={CalculateBmi} />
-			<View style={styles.values}>
-				<DisplayValue title="BMI" value={bmi} />
-			</View>
+			<CalcButton text="Oblicz" onPress={DisplayValues} />
+			{bmi && idealWeight && (
+				<View style={styles.valuesContainer}>
+					<DisplayValue title="BMI" value={bmi} />
+					<DisplayValue title="Waga idealna" value={idealWeight} />
+				</View>
+			)}
 		</View>
 	)
 }
@@ -44,6 +89,11 @@ const BmiScreen = () => {
 const styles = StyleSheet.create({
 	container: {
 		paddingHorizontal: 20,
+	},
+	genderContainer: {
+		marginTop: 20,
+		flexDirection: 'row',
+		justifyContent: 'space-between',
 	},
 	input: {
 		borderWidth: 1,
@@ -54,7 +104,7 @@ const styles = StyleSheet.create({
 		width: '100%',
 		height: 50,
 	},
-	values: {
+	valuesContainer: {
 		marginTop: 30,
 		flexDirection: 'row',
 		justifyContent: 'space-around',
