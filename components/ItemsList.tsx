@@ -4,16 +4,17 @@ import { FlatList, StyleSheet } from 'react-native'
 type PropsType = {
 	items: Array<object>
 	renderItem(item: object): JSX.Element
+	maxHeight?: number
 }
 
-const ItemsList = ({ items, renderItem }: PropsType) => {
+const ItemsList = ({ items, renderItem, maxHeight }: PropsType) => {
 	return (
 		<>
 			{items.length !== 0 ? (
 				<FlatList
 					data={items}
 					renderItem={renderItem}
-					style={styles.list}
+					style={[styles.list, { maxHeight: maxHeight }]}
 				/>
 			) : null}
 		</>
@@ -22,8 +23,7 @@ const ItemsList = ({ items, renderItem }: PropsType) => {
 
 const styles = StyleSheet.create({
 	list: {
-		marginTop: 10,
-		maxHeight: 170,
+		marginTop: 20,
 		flexGrow: 0,
 	},
 })

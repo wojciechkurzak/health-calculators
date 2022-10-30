@@ -2,18 +2,18 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import Icon from '@expo/vector-icons/Ionicons'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
-import { PromilItemType } from '../types/types'
+import { CaloriesItemType } from '../types/types'
 
 type PropsType = {
-	item: PromilItemType
+	item: CaloriesItemType
 	removeItem(id: string): void
 }
 
-const PromilCard = ({ item, removeItem }: PropsType) => {
+const CaloriesCard = ({ item, removeItem }: PropsType) => {
 	return (
 		<View style={styles.container}>
-			<Text style={styles.text}>{item.mililiters}ml</Text>
-			<Text style={styles.text}>{item.percentage}%</Text>
+			<Text style={styles.text}>{item.name}</Text>
+			<Text style={styles.text}>{item.calories} kcal</Text>
 			<TouchableWithoutFeedback onPress={() => removeItem(item.id)}>
 				<Icon name="close" color="#fff" size={24} />
 			</TouchableWithoutFeedback>
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
 	},
 })
 
-export default PromilCard
+export default CaloriesCard

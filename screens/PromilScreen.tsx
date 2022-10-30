@@ -86,7 +86,7 @@ const PromilScreen = () => {
 				/>
 				<AddButton onPress={addItem} />
 			</View>
-			<ItemsList items={items} renderItem={renderItem} />
+			<ItemsList items={items} renderItem={renderItem} maxHeight={170} />
 			<CalcButton text="Calculate" onPress={displayValues} />
 		</View>
 	)
