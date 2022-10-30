@@ -51,12 +51,12 @@ const BmiScreen = () => {
 		<View style={styles.container}>
 			<View style={styles.genderContainer}>
 				<GenderButton
-					text="Mężczyzna"
+					text="Male"
 					value={gender.male}
 					onPress={() => setGender({ male: true, female: false })}
 				/>
 				<GenderButton
-					text="Kobieta"
+					text="Female"
 					value={gender.female}
 					onPress={() => setGender({ male: false, female: true })}
 				/>
@@ -66,7 +66,7 @@ const BmiScreen = () => {
 				value={height}
 				onChangeText={setHeight}
 				keyboardType="numeric"
-				placeholder="Wzrost"
+				placeholder="Height"
 				placeholderTextColor={'#fff'}
 			/>
 			<TextInput
@@ -74,14 +74,14 @@ const BmiScreen = () => {
 				value={weight}
 				onChangeText={setWeight}
 				keyboardType="numeric"
-				placeholder="Waga"
+				placeholder="Weight"
 				placeholderTextColor={'#fff'}
 			/>
-			<CalcButton text="Oblicz" onPress={DisplayValues} />
+			<CalcButton text="Calculate" onPress={DisplayValues} />
 			{bmi && idealWeight && (
 				<View style={styles.valuesContainer}>
 					<DisplayValue title="BMI" value={bmi} />
-					<DisplayValue title="Waga idealna" value={idealWeight} />
+					<DisplayValue title="Perfect weight" value={idealWeight} />
 				</View>
 			)}
 		</View>
