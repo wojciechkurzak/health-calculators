@@ -3,7 +3,7 @@ import { TouchableWithoutFeedback, View, Text, StyleSheet } from 'react-native'
 
 type PropsType = {
 	text: string
-	onPress: Function
+	onPress(): void
 }
 
 const CalcButton = ({ text, onPress }: PropsType) => {

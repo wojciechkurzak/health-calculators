@@ -3,11 +3,7 @@ import { View, StyleSheet, TextInput } from 'react-native'
 import CalcButton from '../components/CalcButton'
 import DisplayValue from '../components/DisplayValue'
 import GenderButton from '../components/GenderButton'
-
-export type GenderType = {
-	male: boolean
-	female: boolean
-}
+import { GenderType } from '../types/types'
 
 const BmiScreen = () => {
 	const [height, setHeight] = useState<string>('')

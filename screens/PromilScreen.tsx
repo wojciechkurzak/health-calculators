@@ -5,14 +5,9 @@ import AddButton from '../components/AddButton'
 import CalcButton from '../components/CalcButton'
 import GenderButton from '../components/GenderButton'
 import ItemsList from '../components/ItemsList'
-import { GenderType } from './BmiScreen'
 import uuid from 'react-native-uuid'
-
-export type ItemType = {
-	id: string | number[]
-	mililiters: string
-	percentage: string
-}
+import PromilCard from '../components/PromilCard'
+import { GenderType, PromilItemType } from '../types/types'
 
 const PromilScreen = () => {
 	const [gender, setGender] = useState<GenderType>({
@@ -22,14 +17,14 @@ const PromilScreen = () => {
 	const [weight, setWeight] = useState<string>('')
 	const [mililiters, setMililiters] = useState<string>('')
 	const [percentage, setPercentage] = useState<string>('')
-	const [items, setItems] = useState<ItemType[]>([])
+	const [items, setItems] = useState<PromilItemType[]>([])
 
 	const addItem = (): void => {
 		if (mililiters.length === 0 || percentage.length === 0) return
 		const newItem = [
 			...items,
 			{
-				id: uuid.v4(),
+				id: uuid.v4().toString(),
 				mililiters: mililiters,
 				percentage: percentage,
 			},
@@ -41,6 +36,10 @@ const PromilScreen = () => {
 		const filteredItems = items.filter((item) => item.id !== id)
 		setItems(filteredItems)
 	}
+
+	const renderItem = ({ item }: { item: PromilItemType }): JSX.Element => (
+		<PromilCard item={item} removeItem={removeItem} />
+	)
 
 	const displayValues = (): void => {
 		console.log('Dzialam!')
@@ -87,7 +86,7 @@ const PromilScreen = () => {
 				/>
 				<AddButton onPress={addItem} />
 			</View>
-			<ItemsList items={items} removeItem={removeItem} />
+			<ItemsList items={items} renderItem={renderItem} />
 			<CalcButton text="Calculate" onPress={displayValues} />
 		</View>
 	)

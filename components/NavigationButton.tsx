@@ -1,10 +1,7 @@
 import * as React from 'react'
 import { View, Text, TouchableWithoutFeedback, StyleSheet } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import type { StackNavigationProp } from '@react-navigation/stack'
-import { StackParamList } from '../App'
-
-type StackNavigation = StackNavigationProp<StackParamList>
+import { StackNavigation } from '../types/types'
 
 type PropsType = {
 	text: string

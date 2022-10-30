@@ -9,13 +9,7 @@ import BmiScreen from './screens/BmiScreen'
 import PromilScreen from './screens/PromilScreen'
 import CaloriesScreen from './screens/CaloriesScreen'
 import { StatusBar } from 'react-native'
-
-export type StackParamList = {
-	Home: undefined
-	Bmi: undefined
-	Promil: undefined
-	Calories: undefined
-}
+import { StackParamList } from './types/types'
 
 const Stack = createStackNavigator<StackParamList>()
 

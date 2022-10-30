@@ -2,11 +2,11 @@ import React from 'react'
 import { View, StyleSheet, TouchableWithoutFeedback } from 'react-native'
 import Icon from '@expo/vector-icons/Octicons'
 
-type AddButtonProps = {
-	onPress: Function
+type PropsType = {
+	onPress(): void
 }
 
-const AddButton = ({ onPress }: AddButtonProps) => {
+const AddButton = ({ onPress }: PropsType) => {
 	return (
 		<TouchableWithoutFeedback onPress={() => onPress()}>
 			<View style={styles.buttonContainer}>

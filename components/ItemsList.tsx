@@ -1,23 +1,12 @@
 import React from 'react'
 import { FlatList, StyleSheet } from 'react-native'
-import { ItemType } from '../screens/PromilScreen'
-import ItemCard from './ItemCard'
 
-type ItemListProps = {
-	items: ItemType[]
-	removeItem: Function
+type PropsType = {
+	items: Array<object>
+	renderItem(item: object): JSX.Element
 }
 
-const ItemsList = ({ items, removeItem }: ItemListProps) => {
-	const renderItem = ({ item }: { item: ItemType }) => (
-		<ItemCard
-			mililiters={item.mililiters}
-			percentage={item.percentage}
-			id={item.id}
-			removeItem={removeItem}
-		/>
-	)
-
+const ItemsList = ({ items, renderItem }: PropsType) => {
 	return (
 		<>
 			{items.length !== 0 ? (

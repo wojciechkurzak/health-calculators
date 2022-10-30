@@ -4,7 +4,7 @@ import { TouchableWithoutFeedback, View, Text, StyleSheet } from 'react-native'
 type PropsType = {
 	text: string
 	value: boolean
-	onPress: Function
+	onPress(): void
 }
 
 const GenderButton = ({ text, value, onPress }: PropsType) => {
