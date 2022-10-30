@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet, TextInput } from 'react-native'
+import { View, StyleSheet, TextInput } from 'react-native'
 import CalcButton from '../components/CalcButton'
 import DisplayValue from '../components/DisplayValue'
 import GenderButton from '../components/GenderButton'
 
-type GenderType = {
+export type GenderType = {
 	male: boolean
 	female: boolean
 }
@@ -19,7 +19,7 @@ const BmiScreen = () => {
 	const [bmi, setBmi] = useState<string>('')
 	const [idealWeight, setIdealWeight] = useState<string>('')
 
-	const CalculateBmi = (): void => {
+	const calculateBmi = (): void => {
 		const value =
 			Math.round(
 				(parseInt(weight) / Math.pow(parseInt(height) / 100, 2)) * 10
@@ -27,7 +27,7 @@ const BmiScreen = () => {
 		setBmi(value.toString())
 	}
 
-	const CalculateIdealWeight = () => {
+	const calculateIdealWeight = () => {
 		const value =
 			Math.round(
 				(parseInt(height) - 100) * (gender.male ? 0.9 : 0.85) * 10
@@ -35,7 +35,7 @@ const BmiScreen = () => {
 		setIdealWeight(value.toString())
 	}
 
-	const DisplayValues = (): void => {
+	const displayValues = (): void => {
 		if (
 			height.length === 0 ||
 			weight.length === 0 ||
@@ -43,8 +43,8 @@ const BmiScreen = () => {
 		)
 			return
 
-		CalculateBmi()
-		CalculateIdealWeight()
+		calculateBmi()
+		calculateIdealWeight()
 	}
 
 	return (
@@ -77,7 +77,7 @@ const BmiScreen = () => {
 				placeholder="Weight"
 				placeholderTextColor={'#fff'}
 			/>
-			<CalcButton text="Calculate" onPress={DisplayValues} />
+			<CalcButton text="Calculate" onPress={displayValues} />
 			{bmi && idealWeight && (
 				<View style={styles.valuesContainer}>
 					<DisplayValue title="BMI" value={bmi} />
