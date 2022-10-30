@@ -30,11 +30,11 @@ const styles = StyleSheet.create({
 		backgroundColor: '#eb1555',
 		marginTop: 40,
 		borderRadius: 8,
+		justifyContent: 'center',
 	},
 	text: {
 		textAlign: 'center',
 		color: '#fff',
-		lineHeight: 50,
 		fontSize: 18,
 	},
 })
