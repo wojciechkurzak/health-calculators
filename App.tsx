@@ -38,7 +38,10 @@ const App = () => {
 		<>
 			<StatusBar backgroundColor="#0a0e21" barStyle="light-content" />
 			<NavigationContainer>
-				<Stack.Navigator initialRouteName="Home">
+				<Stack.Navigator
+					initialRouteName="Home"
+					detachInactiveScreens={false}
+				>
 					<Stack.Screen
 						name="Home"
 						component={HomeScreen}
