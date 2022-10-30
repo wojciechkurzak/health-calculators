@@ -18,8 +18,8 @@ const CalcButton = ({ text, onPress }: PropsType) => {
 
 const styles = StyleSheet.create({
 	buttonContainer: {
-		backgroundColor: '#00f',
-		height: 30,
+		backgroundColor: '#eb1555',
+		height: 40,
 		borderRadius: 8,
 		marginTop: 20,
 	},
@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
 		color: '#fff',
 		textAlign: 'center',
 		fontSize: 20,
-		lineHeight: 30,
+		lineHeight: 40,
+		fontWeight: '500',
 	},
 })
 

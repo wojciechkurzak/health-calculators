@@ -17,18 +17,22 @@ const DisplayValue = ({ title, value }: PropsType) => {
 
 const styles = StyleSheet.create({
 	container: {
-		borderWidth: 1,
-		borderColor: '#000',
+		backgroundColor: '#1d1e33',
 		borderRadius: 8,
-		padding: 10,
+		paddingVertical: 10,
 		width: 150,
+		height: 80,
 		alignItems: 'center',
+		justifyContent: 'space-between',
 	},
 	upperText: {
 		fontSize: 14,
+		color: '#fff',
 	},
 	bottomText: {
-		fontSize: 22,
+		fontSize: 24,
+		color: '#fff',
+		fontWeight: '500',
 	},
 })
 

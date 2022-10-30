@@ -20,18 +20,20 @@ const GenderButton = ({ text, value, onPress }: PropsType) => {
 const styles = StyleSheet.create({
 	buttonContainer: {
 		borderWidth: 1,
-		borderColor: '#000',
+		borderColor: '#111328',
 		borderRadius: 8,
 		height: 50,
-		backgroundColor: 'transparent',
+		backgroundColor: '#111328',
 		flexBasis: '48%',
 	},
 	checked: {
-		backgroundColor: '#f00',
+		borderColor: '#eb1555',
+		backgroundColor: '#1d1e33',
 	},
 	text: {
 		textAlign: 'center',
 		lineHeight: 50,
+		color: '#fff',
 	},
 })
 

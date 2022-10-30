@@ -67,6 +67,7 @@ const BmiScreen = () => {
 				onChangeText={setHeight}
 				keyboardType="numeric"
 				placeholder="Wzrost"
+				placeholderTextColor={'#fff'}
 			/>
 			<TextInput
 				style={styles.input}
@@ -74,6 +75,7 @@ const BmiScreen = () => {
 				onChangeText={setWeight}
 				keyboardType="numeric"
 				placeholder="Waga"
+				placeholderTextColor={'#fff'}
 			/>
 			<CalcButton text="Oblicz" onPress={DisplayValues} />
 			{bmi && idealWeight && (
@@ -89,6 +91,8 @@ const BmiScreen = () => {
 const styles = StyleSheet.create({
 	container: {
 		paddingHorizontal: 20,
+		backgroundColor: '#0a0e21',
+		flex: 1,
 	},
 	genderContainer: {
 		marginTop: 20,
@@ -96,13 +100,13 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 	},
 	input: {
-		borderWidth: 1,
-		borderColor: '#000',
 		borderRadius: 8,
 		marginTop: 20,
 		padding: 10,
 		width: '100%',
 		height: 50,
+		backgroundColor: '#1d1e33',
+		color: '#fff',
 	},
 	valuesContainer: {
 		marginTop: 30,
