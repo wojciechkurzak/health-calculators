@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
 		height: 50,
 		backgroundColor: '#111328',
 		flexBasis: '48%',
+		justifyContent: 'center',
 	},
 	checked: {
 		borderColor: '#eb1555',
@@ -32,7 +33,6 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		textAlign: 'center',
-		lineHeight: 50,
 		color: '#fff',
 	},
 })
