@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { View, Text, TouchableWithoutFeedback, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableNativeFeedback } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { StackNavigation } from '../types/types'
 
@@ -12,11 +12,11 @@ const NavigationButton = ({ text, route }: PropsType) => {
 	const navigation = useNavigation<StackNavigation>()
 
 	return (
-		<TouchableWithoutFeedback onPress={() => navigation.navigate(route)}>
+		<TouchableNativeFeedback onPress={() => navigation.navigate(route)}>
 			<View style={styles.container}>
 				<Text style={styles.text}>{text}</Text>
 			</View>
-		</TouchableWithoutFeedback>
+		</TouchableNativeFeedback>
 	)
 }
 

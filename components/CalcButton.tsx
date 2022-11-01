@@ -1,5 +1,5 @@
 import React from 'react'
-import { TouchableWithoutFeedback, View, Text, StyleSheet } from 'react-native'
+import { TouchableNativeFeedback, View, Text, StyleSheet } from 'react-native'
 
 type PropsType = {
 	text: string
@@ -8,11 +8,11 @@ type PropsType = {
 
 const CalcButton = ({ text, onPress }: PropsType) => {
 	return (
-		<TouchableWithoutFeedback onPress={() => onPress()}>
+		<TouchableNativeFeedback onPress={() => onPress()}>
 			<View style={styles.buttonContainer}>
 				<Text style={styles.text}>{text}</Text>
 			</View>
-		</TouchableWithoutFeedback>
+		</TouchableNativeFeedback>
 	)
 }
 
