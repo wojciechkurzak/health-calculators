@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
 import AddButton from '../components/AddButton'
 import CalcButton from '../components/CalcButton'
@@ -8,6 +8,7 @@ import ItemsList from '../components/ItemsList'
 import uuid from 'react-native-uuid'
 import PromilCard from '../components/PromilCard'
 import { GenderType, PromilItemType } from '../types/types'
+import DisplayValue from '../components/DisplayValue'
 
 const PromilScreen = () => {
 	const [gender, setGender] = useState<GenderType>({
@@ -18,6 +19,8 @@ const PromilScreen = () => {
 	const [mililiters, setMililiters] = useState<string>('')
 	const [percentage, setPercentage] = useState<string>('')
 	const [items, setItems] = useState<PromilItemType[]>([])
+	const [promils, setPromils] = useState<string>('')
+	const [soberTime, setSoberTime] = useState<string>('')
 
 	const addItem = (): void => {
 		if (mililiters.length === 0 || percentage.length === 0) return
@@ -37,13 +40,41 @@ const PromilScreen = () => {
 		setItems(filteredItems)
 	}
 
+	const calculateGrams = (): number => {
+		let grams = 0
+		items.forEach(
+			(item) =>
+				(grams +=
+					parseFloat(item.mililiters) *
+					(parseFloat(item.percentage) / 100) *
+					0.8)
+		)
+		return grams
+	}
+
+	const calculatePromil = (grams: number): void => {
+		const promil =
+			Math.round(
+				(grams / ((gender.male ? 0.7 : 0.6) * parseFloat(weight))) * 100
+			) / 100
+		setPromils(promil.toString())
+	}
+
+	const calculateSoberTime = (grams: number): void => {
+		const soberTime = Math.round(grams / 10)
+		setSoberTime(soberTime.toString())
+	}
+
+	const displayValues = (): void => {
+		if ((!gender.male && !gender.female) || !weight || !items) return
+		const grams = calculateGrams()
+		calculatePromil(grams)
+		calculateSoberTime(grams)
+	}
+
 	const renderItem = ({ item }: { item: PromilItemType }): JSX.Element => (
 		<PromilCard item={item} removeItem={removeItem} />
 	)
-
-	const displayValues = (): void => {
-		console.log('Dzialam!')
-	}
 
 	return (
 		<View style={styles.container}>
@@ -88,6 +119,12 @@ const PromilScreen = () => {
 			</View>
 			<ItemsList items={items} renderItem={renderItem} maxHeight={170} />
 			<CalcButton text="Calculate" onPress={displayValues} />
+			{promils && soberTime && (
+				<View style={styles.valuesContainer}>
+					<DisplayValue title="Promils" value={promils} />
+					<DisplayValue title="Sober time" value={soberTime} />
+				</View>
+			)}
 		</View>
 	)
 }
@@ -121,6 +158,11 @@ const styles = StyleSheet.create({
 	itemInput: {
 		width: '40%',
 		marginTop: 0,
+	},
+	valuesContainer: {
+		marginTop: 30,
+		flexDirection: 'row',
+		justifyContent: 'space-around',
 	},
 })
 
