@@ -47,7 +47,7 @@ const CaloriesScreen = () => {
 					style={[styles.input, styles.nameInput]}
 					value={name}
 					onChangeText={setName}
-					placeholder="name"
+					placeholder="Name"
 					placeholderTextColor={'#fff'}
 				/>
 				<TextInput
