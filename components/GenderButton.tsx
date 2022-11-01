@@ -1,16 +1,19 @@
+import { Ionicons } from '@expo/vector-icons'
 import React from 'react'
 import { TouchableWithoutFeedback, View, Text, StyleSheet } from 'react-native'
 
 type PropsType = {
 	text: string
 	value: boolean
+	iconName: 'male' | 'female'
 	onPress(): void
 }
 
-const GenderButton = ({ text, value, onPress }: PropsType) => {
+const GenderButton = ({ text, value, iconName, onPress }: PropsType) => {
 	return (
 		<TouchableWithoutFeedback onPress={() => onPress()}>
 			<View style={[styles.buttonContainer, value && styles.checked]}>
+				<Ionicons name={iconName} size={20} color="#fff" />
 				<Text style={styles.text}>{text}</Text>
 			</View>
 		</TouchableWithoutFeedback>
@@ -26,6 +29,7 @@ const styles = StyleSheet.create({
 		backgroundColor: '#111328',
 		flexBasis: '48%',
 		justifyContent: 'center',
+		alignItems: 'center',
 	},
 	checked: {
 		borderColor: '#eb1555',

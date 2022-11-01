@@ -82,11 +82,13 @@ const PromilScreen = () => {
 				<GenderButton
 					text="Male"
 					value={gender.male}
+					iconName="male"
 					onPress={() => setGender({ male: true, female: false })}
 				/>
 				<GenderButton
 					text="Female"
 					value={gender.female}
+					iconName="female"
 					onPress={() => setGender({ male: false, female: true })}
 				/>
 			</View>
