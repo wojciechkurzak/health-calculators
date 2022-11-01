@@ -59,7 +59,7 @@ const BmiScreen = () => {
 				value={height}
 				onChangeText={setHeight}
 				keyboardType="numeric"
-				placeholder="Height"
+				placeholder="Height [cm]"
 				placeholderTextColor={'#fff'}
 			/>
 			<TextInput
@@ -67,7 +67,7 @@ const BmiScreen = () => {
 				value={weight}
 				onChangeText={setWeight}
 				keyboardType="numeric"
-				placeholder="Weight"
+				placeholder="Weight [kg]"
 				placeholderTextColor={'#fff'}
 			/>
 			<CalcButton text="Calculate" onPress={displayValues} />

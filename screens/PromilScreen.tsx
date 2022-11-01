@@ -97,7 +97,7 @@ const PromilScreen = () => {
 				value={weight}
 				onChangeText={setWeight}
 				keyboardType="numeric"
-				placeholder="Weight"
+				placeholder="Weight [kg]"
 				placeholderTextColor={'#fff'}
 			/>
 			<View style={styles.itemContainer}>
