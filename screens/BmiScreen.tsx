@@ -18,7 +18,8 @@ const BmiScreen = () => {
 	const calculateBmi = (): void => {
 		const value =
 			Math.round(
-				(parseInt(weight) / Math.pow(parseInt(height) / 100, 2)) * 10
+				(parseFloat(weight) / Math.pow(parseFloat(height) / 100, 2)) *
+					10
 			) / 10
 		setBmi(value.toString())
 	}
@@ -26,19 +27,13 @@ const BmiScreen = () => {
 	const calculateIdealWeight = () => {
 		const value =
 			Math.round(
-				(parseInt(height) - 100) * (gender.male ? 0.9 : 0.85) * 10
+				(parseFloat(height) - 100) * (gender.male ? 0.9 : 0.85) * 10
 			) / 10
 		setIdealWeight(value.toString())
 	}
 
 	const displayValues = (): void => {
-		if (
-			height.length === 0 ||
-			weight.length === 0 ||
-			(!gender.male && !gender.female)
-		)
-			return
-
+		if (!height || !weight || (!gender.male && !gender.female)) return
 		calculateBmi()
 		calculateIdealWeight()
 	}
