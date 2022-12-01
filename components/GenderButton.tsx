@@ -11,7 +11,7 @@ type PropsType = {
 
 const GenderButton = ({ text, value, iconName, onPress }: PropsType) => {
 	return (
-		<TouchableWithoutFeedback onPress={() => onPress()}>
+		<TouchableWithoutFeedback onPress={onPress}>
 			<View style={[styles.buttonContainer, value && styles.checked]}>
 				<Ionicons name={iconName} size={20} color="#fff" />
 				<Text style={styles.text}>{text}</Text>

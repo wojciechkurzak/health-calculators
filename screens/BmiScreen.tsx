@@ -24,7 +24,7 @@ const BmiScreen = () => {
 		setBmi(value.toString())
 	}
 
-	const calculateIdealWeight = () => {
+	const calculateIdealWeight = (): void => {
 		const value =
 			Math.round(
 				(parseFloat(height) - 100) * (gender.male ? 0.9 : 0.85) * 10

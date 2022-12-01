@@ -8,7 +8,7 @@ type PropsType = {
 
 const AddButton = ({ onPress }: PropsType) => {
 	return (
-		<TouchableNativeFeedback onPress={() => onPress()}>
+		<TouchableNativeFeedback onPress={onPress}>
 			<View style={styles.buttonContainer}>
 				<Icon name="plus" color="#fff" size={26} />
 			</View>

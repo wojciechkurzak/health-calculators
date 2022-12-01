@@ -8,7 +8,7 @@ type PropsType = {
 
 const CalcButton = ({ text, onPress }: PropsType) => {
 	return (
-		<TouchableNativeFeedback onPress={() => onPress()}>
+		<TouchableNativeFeedback onPress={onPress}>
 			<View style={styles.buttonContainer}>
 				<Text style={styles.text}>{text}</Text>
 			</View>
