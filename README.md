@@ -5,3 +5,8 @@
 <li>React Native</li>
 <li>TypeScript</li>
 </ul>
+<h2>Compatibility</h2>
+<ul>
+<li>Android :heavy_check_mark:</li>
+<li>iOS :x:</li>
+</ul>
